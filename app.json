@@ -1,0 +1,34 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/image/image",
+    "pages/detail/detail",
+    "pages/boxlist/boxlist",
+    "pages/boxdetail/boxdetail"    
+  ],
+  "tabBar": {
+    "color": "#a9b7b7",
+    "selectedColor": "#eb4f38",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "段子",
+        "iconPath": "image/wordN.png",
+        "selectedIconPath": "image/wordS.png"
+      },
+      {
+        "pagePath": "pages/image/image",
+        "text": "图片",
+        "iconPath": "image/imageN.png",
+        "selectedIconPath": "image/imageS.png"
+      }
+    ]
+  },
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#eb4f38",
+    "navigationBarTextStyle":"white"
+  }
+}

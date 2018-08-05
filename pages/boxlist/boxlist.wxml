@@ -1,0 +1,16 @@
+<scroll-view scroll-y="true" bindscrolltoupper="bindscrolltoupper" bindscrolltolower="bindscrolltolower" style="height: 100%">
+  <block wx:for-items="{{list}}" >
+    <view class='game-group'>
+        <view class='box-title'>{{item.group_name}}</view>
+        <view class='game-list'>
+          <view wx:for="{{item.game_list}}"  wx:for-item="game_list" class='game'>
+              <navigator target="miniProgram" open-type="navigate" app-id="{{game_list.appId}}" path="{{game_list.path}}" extra-data="" version="release" hover-class='navigator-hover'>
+                <image class='game-icon ' src="{{game_list.icon_url}}"></image>
+                <text class='game-name'>{{game_list.name}}</text>
+              </navigator>
+          </view>        
+        </view>
+    </view>
+    <view class="divLine"></view>
+  </block>
+</scroll-view>

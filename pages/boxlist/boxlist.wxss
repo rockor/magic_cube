@@ -1,0 +1,38 @@
+
+.game-group {
+  background-color:white;
+  padding: 15rpx;
+}
+
+.box-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  margin: 15rpx 0 15rpx 2rpx; 
+}
+
+.game-list{
+  display:flex; 
+  flex-direction:row;
+  justify-content:flex-start;
+  width: fit-content;
+  flex-wrap:wrap;
+}
+
+.game {
+  width: 150rpx;
+  font-size: 24rpx; 
+  margin: 20rpx 20rpx 20rpx 10rpx;
+  text-align: center;
+}
+
+.game-icon {
+   width: 150rpx; 
+   height: 150rpx; 
+   border-radius: 5rpx;
+}
+
+.divLine {
+background:#f3f3f3;
+width:100%;
+height:15rpx;
+}
