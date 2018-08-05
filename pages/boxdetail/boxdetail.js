@@ -1,4 +1,5 @@
 const Util = require('../../utils/util.js');
+const app = getApp();
 
 // pages/boxdetail/boxdetail.js
 Page({
@@ -20,6 +21,11 @@ Page({
     // 接受传输的 渠道&来源
     this.data.channelId = options.channelId;
     this.data.source = options.source;
+
+    app.aldstat.sendEvent('展示', {
+        channelId: options.channelId,
+        source: options.source,
+    });
 
     // 请求数据
     this.requestData(options);
@@ -56,9 +62,6 @@ Page({
 
         // 如果存在默认值 则进入
         if (res.data.default) {
-            //  wx.reLaunch({
-            //    url: '../boxlist/boxlist?channelId=' + that.data.channelId + '&source=' + that.data.source + '&appId=' + res.data.default.appId,
-            //  })
         }
       }
     })
@@ -68,8 +71,17 @@ Page({
    * 跳转至列表页面 
    */
   impList:function(e) {
+
+    // 统计 点击事件
+    app.aldstat.sendEvent('点击', {
+      channelId: this.data.channelId,
+      source: this.data.source,
+      appId: e.currentTarget.id,
+    });
+
+    // 跳转至列表页面
     wx.reLaunch({
-      url: '../boxlist/boxlist?channelId=' + this.data.channelId + '&source=' + this.data.source + '&appId=' + e.currentTarget.id,
+      url: '../boxlist/boxlist',
     })
   },
 

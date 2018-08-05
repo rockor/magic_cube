@@ -1,4 +1,5 @@
 const Util = require('../../utils/util.js');
+const app = getApp();
 
 Page({
 
@@ -7,9 +8,6 @@ Page({
    */
   data: {
     list: [],
-    channelId: '',
-    source: '',
-    appId:'',
     default:[],
   },
 
@@ -17,10 +15,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.data.channelId = options.channelId;
-    this.data.source = options.source;
-    this.data.appId = options.appId;
-
     // 请求列表数据
     this.requestData(options);
   },
@@ -30,20 +24,15 @@ Page({
     wx.request({
       url: Util.apiUrl + '/box_list',
       data: {
-        channel_id: e.channelId,
-        source: e.source,
-        appId: e.appId,
       },
       method: 'GET',
       success: function (res) {
-        console.log(res);
-        console.log(res.data.default);
         that.setData({
           // 拼接数组
           list: that.data.list.concat(res.data.list),
           default: res.data.default ? res.data.default : that.data.default,
         });
-        console.log(that.data.default);
+
         // 如果存在默认值 则进入
         if (res.data.default) {
         }
@@ -51,13 +40,16 @@ Page({
     })
   },
 
-  onclick:function(){},
+  clickApp:function(e) {
+    app.aldstat.sendEvent('列表点击', {
+      appId: e.currentTarget.id,
+    });
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
   },
 
   /**

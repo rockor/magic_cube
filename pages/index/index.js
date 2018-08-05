@@ -10,9 +10,8 @@ Page({
     // 页面初始化 options为页面跳转所带来的参数
     //加载最新
     wx.reLaunch({
-      url: '../boxdetail/boxdetail?channel=wk',
-    });
-
+      url: '../boxdetail/boxdetail?channelId=wk&source=wechat',
+    })
     // this.requestData('newlist');
   },
 
