@@ -1,3 +1,4 @@
+const Page = require('../../utils/ald-stat.js').Page;
 const Util = require('../../utils/util.js');
 
 Page({
@@ -9,10 +10,10 @@ Page({
   onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数
     //加载最新
-    wx.reLaunch({
-      url: '../boxdetail/boxdetail?channelId=wk&source=wechat',
-    })
-    // this.requestData('newlist');
+    // wx.reLaunch({
+    //   url: '../boxdetail/boxdetail?channelId=wk&source=wechat',
+    // })
+    this.requestData('newlist');
   },
 
   /**

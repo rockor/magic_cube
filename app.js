@@ -1,4 +1,4 @@
-const ald = require('./utils/ald-stat.js');
+const App = require('./utils/ald-stat.js').App;
 
 App({
 })
