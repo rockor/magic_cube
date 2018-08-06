@@ -20,12 +20,12 @@ Page({
    */
   onLoad: function (options) {
     // 接受传输的 渠道&来源
-    this.data.channelId = options.channelId;
-    this.data.source = options.source;
+    this.data.channelId = options.channelId ? options.channelId : options.ald_media_id;
+    this.data.source = options.source ? options.source : options.ald_media_id ;
 
     app.aldstat.sendEvent('展示', {
-        channelId: options.channelId,
-        source: options.source,
+      channelId: this.data.channelId,
+      source: this.data.source,
     });
 
     // 请求数据
@@ -63,6 +63,7 @@ Page({
 
         // 如果存在默认值 则进入
         if (res.data.default) {
+          
         }
       }
     })
