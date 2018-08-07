@@ -42,5 +42,5 @@ let shareConfig = (option = {}) => {
 module.exports = {
   formatTime: formatTime,
   shareConfig: shareConfig,
-  apiUrl: 'https://api.dickor.top'
+  apiUrl: 'https://wxmp.bduang.cn'
 }

@@ -28,6 +28,9 @@ Page({
       source: this.data.source,
     });
 
+    console.log(this.data.channelId);
+    console.log(this.data.source);
+
     // 请求数据
     this.requestData(options);
 
@@ -80,7 +83,9 @@ Page({
       source: this.data.source,
       appId: e.currentTarget.id,
     });
-
+    console.log(this.data.channelId);
+    console.log(this.data.source);
+    console.log(e.currentTarget.id);
     // 跳转至列表页面
     wx.reLaunch({
       url: '../boxlist/boxlist',

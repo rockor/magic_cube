@@ -4,7 +4,7 @@
         <view class='box-title'>{{item.group_name}}</view>
         <view class='game-list'>
           <view wx:for="{{item.game_list}}"  wx:for-item="game_list" class='game'>
-              <navigator target="miniProgram" open-type="navigate" app-id="{{game_list.appId}}" path="{{game_list.path}}" extra-data="" version="release" hover-class='navigator-hover' bindtap="clickApp">
+              <navigator target="miniProgram" open-type="navigate" app-id="{{game_list.appId}}" path="{{game_list.path}}" extra-data="" version="release" hover-class='navigator-hover' bindtap="clickApp" id='{{game_list.appId}}' >
                 <image class='game-icon ' src="{{game_list.icon_url}}"></image>
                 <text class='game-name'>{{game_list.name}}</text>
               </navigator>
