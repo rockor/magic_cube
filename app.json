@@ -27,8 +27,10 @@
     ]
   },
   "window":{
-    "backgroundTextStyle":"light",
+    "backgroundColor": "#eb4f38",
+    "backgroundTextStyle":"dark",
     "navigationBarBackgroundColor": "#eb4f38",
-    "navigationBarTextStyle":"white"
+    "navigationBarTextStyle":"white",
+    "enablePullDownRefresh": true
   }
 }

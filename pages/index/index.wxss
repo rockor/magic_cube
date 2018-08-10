@@ -1,5 +1,9 @@
-
 /*中间文字样式*/
 .centerContent{
   font-size: 33rpx;
+}
+
+.showLoading {
+  width: 100%;
+  height: 40rpx;
 }

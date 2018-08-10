@@ -1,5 +1,5 @@
 <loading hidden="{{loadingHidden}}">正在加载...</loading>
-<scroll-view scroll-y="true" bindscrolltolower="bindscrolltolower" style="height: 100%">
+<view scroll-y="true"  bindscrolltolower="onReachBottom" style="height: 100%">
   <block wx:for-items="{{list}}">
     <!-- 分割线 -->
     <view class="divLine"></view>
@@ -49,4 +49,7 @@
       </view>
     </view>
   </block>
-</scroll-view>
+  <view style='background:#f3f3f3;'>
+    <image src='../../image/loading.gif' mode="aspectFit" class='showLoading' hidden='{{hasMore}}'></image>
+  </view>
+</view>

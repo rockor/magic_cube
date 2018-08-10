@@ -1,8 +1,9 @@
 <loading hidden="{{loadingHidden}}">正在加载...</loading>
-<scroll-view scroll-y="true" bindscrolltoupper="bindscrolltoupper" bindscrolltolower="bindscrolltolower" style="height: 100%">
+<view scroll-y="true"  bindscrolltolower="onReachBottom" style="height: 100%"  > 
   <block wx:for-items="{{list}}">
-    <!-- 分割线 -->
     <view class="divLine"></view>
+    <!-- 分割线 -->
+
     <!-- 整体item样式 -->
     <view class="containsView">
     <!--顶部样式-->
@@ -17,23 +18,10 @@
       <text class="centerContent">{{item.text}}</text>
       <!-- 底部view样式 -->
       <view class="bottomView">
-        <!-- <view class="bottomItemView">
-          <image class="bottomItemImage" src="../../image/ding.png" />
-          <text class="bottomItemText">{{item.ding}}</text>
-        </view>
-        <view class="bottomItemView">
-          <image class="bottomItemImage" src="../../image/cai.png" />
-          <text class="bottomItemText">{{item.cai}}</text>
-        </view>
-        <view class="bottomItemView">
-          <image class="bottomItemImage" src="../../image/share.png" />
-          <text class="bottomItemText">{{item.repost}}</text>
-        </view>
-        <view class="bottomItemView">
-          <image class="bottomItemImage" src="../../image/comment.png" />
-          <text class="bottomItemText">{{item.comment}}</text>
-        </view> -->
       </view>
     </view>
   </block>
-</scroll-view>
+  <view style='background:#f3f3f3;'>
+    <image src='../../image/loading.gif' mode="aspectFit" class='showLoading' hidden='{{hasMore}}'></image>
+  </view>
+</view>

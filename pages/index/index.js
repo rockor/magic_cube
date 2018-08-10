@@ -5,14 +5,11 @@ Page({
   data: {
     list: [],
     maxtime: '',
-    loadingHidden: false
+    loadingHidden: false,
+    hasMore: true,
   },
   onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数
-    //加载最新
-    // wx.reLaunch({
-    //   url: '../boxdetail/boxdetail?channelId=wk&source=wechat',
-    // })
     this.requestData('newlist');
   },
 
@@ -20,6 +17,7 @@ Page({
    * 上拉刷新
    */
   bindscrolltoupper: function () {
+
     //加载最新
     this.requestData('newlist');
   },
@@ -27,9 +25,16 @@ Page({
   /**
    * 加载更多
    */
-  bindscrolltolower: function () {
+  onReachBottom: function () {
     //加载更多
     this.requestData('list');
+  },
+
+  onPullDownRefresh: function () {
+    wx.showNavigationBarLoading() //在标题栏中显示加载
+
+    // 加载最新
+    this.requestData('newlist');
   },
 
   /**
@@ -37,6 +42,7 @@ Page({
    */
   requestData: function (a) {
     var that = this;
+
     wx.request({
       url: Util.apiUrl + '/word',
       data: {
@@ -46,19 +52,22 @@ Page({
       },
       method: 'GET',
       success: function (res) {
-        console.log(res);
         that.setData({
           // 拼接数组
-          list: that.data.list.concat(res.data.list),
+          list: a == 'newlist' ? [].concat(res.data.list).concat(that.data.list)  :that.data.list.concat(res.data.list),
           loadingHidden: true,
-          maxtime: res.data.info.maxtime
-        })
+          maxtime: res.data.info.maxtime,
+          hasMore:false,
+        });
 
+        wx.hideNavigationBarLoading() //完成停止加载
+        wx.stopPullDownRefresh() //停止下拉刷新
       }
     })
   },
   onReady: function () {
     // 页面渲染完成
+    
   },
   onShow: function () {
     // 页面显示

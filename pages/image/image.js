@@ -6,7 +6,8 @@ Page({
   data: {
     list: [],
     maxtime: '',
-    loadingHidden: false
+    loadingHidden: false,
+    hasMore:true,
   },
   onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数
@@ -20,6 +21,18 @@ Page({
     console.log('到底部')
     this.requestData('list');
 
+  },
+
+  onReachBottom: function () {
+    //加载更多
+    this.requestData('list');
+  },
+
+  onPullDownRefresh: function () {
+    wx.showNavigationBarLoading() //在标题栏中显示加载
+
+    // 加载最新
+    this.requestData('newlist');
   },
 
   /**
@@ -41,11 +54,14 @@ Page({
         console.log('上一页', that.datalist)
         that.setData({
           // 拼接数组
-          list: that.data.list.concat(res.data.list),
+          list: a == 'newlist' ? [].concat(res.data.list).concat(that.data.list) : that.data.list.concat(res.data.list),
           loadingHidden: true,
-          maxtime: res.data.info.maxtime
+          maxtime: res.data.info.maxtime,
+          hasMore: false,
         })
 
+        wx.hideNavigationBarLoading() //完成停止加载
+        wx.stopPullDownRefresh() //停止下拉刷新
       }
     })
   },
