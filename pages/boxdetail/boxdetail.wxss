@@ -56,7 +56,6 @@ page {
 button {
   float: right;
   height: 80rpx;
-  border-radius: 80rpx;
   background-color: blueviolet;
   margin: 15px;
   font-size: smaller;
