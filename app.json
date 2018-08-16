@@ -1,10 +1,11 @@
 {
   "pages":[
+    "pages/introduction/list",
     "pages/index/index",
     "pages/image/image",
     "pages/detail/detail",
     "pages/boxlist/boxlist",
-    "pages/boxdetail/boxdetail"    
+    "pages/boxdetail/boxdetail"
   ],
   "tabBar": {
     "color": "#a9b7b7",

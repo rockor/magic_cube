@@ -1,0 +1,50 @@
+<loading hidden="{{loadingHidden}}">正在加载...</loading>
+<scroll-view scroll-y="true" bindscrolltoupper="bindscrolltoupper" bindscrolltolower="bindscrolltolower" style="height: 100%">
+  <view>
+    <swiper indicator-dots="{{carousel.indicatorDots}}" indicator-color="{{carousel.indicatorColor}}" indicator-active-color="{{carousel.indicatorActiveColor}}"  autoplay="{{carousel.autoplay}}" interval="{{carousel.interval}}" duration="{{carousel.duration}}" circular="true">
+      <block wx:for="{{carousel.imgUrls}}">
+        <swiper-item>
+          <navigator target="miniProgram" open-type="navigate" app-id="{{item.appId}}" path="{{item.path}}" extra-data="{{item.extraData}}" version="release" hover-class='navigator-hover' bindtap="bannerClick" id='{{item.appId}}'>
+            <image src="{{item.url}}" class="slide-image" class='img-banner' mode='widthFix' />
+          </navigator>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <block wx:for-items="{{list}}" >
+    <navigator target="miniProgram" open-type="navigate" app-id="{{item.appId}}" path="{{item.path}}" extra-data="{{item.extraData}}" version="release" hover-class='navigator-hover' bindtap="iconClick" id='{{item.appId}}'  class='item-box'>
+      <view class='icon-list'>
+        <view class='icon'>
+            <image src='{{item.icon}}'></image>
+        </view>
+        <view class='content'>
+          <view class='title'><text class='icon-name'>{{item.name}}</text><text class='icon-number'>{{item.number}}人在玩</text></view> 
+          <view class='description'><text>{{item.description}}</text></view> 
+        </view>
+        <view class='clickButton'>
+          <button>开始</button>
+        </view>
+      </view>
+     </navigator>
+  </block>
+  <view class="divLine"></view>
+</scroll-view>
+
+<!--使用animation属性指定需要执行的动画 弹框 -->
+<view class='drawer_screen' hidden='{{screenHidden}}' ></view>
+<navigator arget="miniProgram" open-type="navigate" app-id="{{adData.appId}}" path="{{adData.path}}" extra-data="{{adData.extraData}}" version="release" hover-class='navigator-hover' bindtap="adClick" id='{{adData.appId}}'>
+<view  class="drawer_box" wx:if="{{showModal}}">
+  <view class='btn-close' catchtap='clickClose'>
+    <image src='../../image/close.png'></image>
+  </view>
+  <view class='box-img'>
+    <image class='box-img-content' src="{{adData.img_url}}"></image>
+    <text class='box-img-tip'>{{adData.descriptiton}}</text>
+  </view>
+  <view class='box-icon'>
+    <image src='{{adData.icon_url}}' mode='widthFix'></image>
+    <text class='icon-name'>{{adData.name}}</text>
+    <button>马上进入</button>
+  </view>
+</view>
+</navigator>  
