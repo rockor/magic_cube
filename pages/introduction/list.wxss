@@ -4,7 +4,7 @@
 
 .item-box {
   padding: 40rpx;
-  border-top: solid 3rpx #ccc;
+  border-top: solid 3rpx #f3f3f3;
 }
 
 .item-box .icon-list {
@@ -17,8 +17,8 @@
 }
 
 .icon image {
-  width: 120rpx;
-  height: 120rpx;
+  width: 80rpx;
+  height: 80rpx;
 }
 
 .item-box .content {
@@ -41,20 +41,23 @@
 
 .item-box .description {
   width: 100%;
-  font-size: 25rpx; 
+  font-size: 28rpx; 
   color: #949494;
   margin-top: 20rpx;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  font-family: 'microsoft yahei';
 }
 
 .clickButton button {
-   width: 120rpx;
+  width: 120rpx;
   height: 100%;
-  font-size: 25rpx;
+  font-size: 28rpx;
   color: white;
   background-color: #5B79F7;
+  text-align: center;
+  font-family: 'microsoft yahei';
 }
 
 /*mask*/ 
@@ -73,7 +76,7 @@
 /*content*/ 
 .drawer_box { 
   width: 600rpx;  
-  top: 18%;  
+  top: 23%;  
   left: 11%;  
   z-index: 1001;  
   border-radius: 35rpx; 
@@ -86,15 +89,25 @@
   height: 120rpx;
   position: absolute;
   right: 0;
-  top: 0;
+  top: -150rpx;
   padding: 30rpx 30rpx 0 0;
   z-index:1003;
 }
 
 .btn-close image {
-  width: 50rpx;
-  height: 50rpx;
+  width: 60rpx;
+  height: 60rpx;
   float: right;
+}
+
+.close-line {
+  width:2rpx;
+  height:62rpx;
+  position:absolute;
+  right:59rpx;
+  top:-62rpx;
+  z-index:1003;
+  background:#dbdbdb;
 }
 
 .box-img {
@@ -151,11 +164,13 @@
 .box-icon button {
   height: 80rpx;
   background-color: #5B79F7;
-  font-size: small;
+  font: 28rpx "microsoft yahei";
   color: white;
   border-radius: 30rpx;
   width: 160rpx;
   margin: 20rpx;
-  padding: 5rpx; 
+  padding: 5rpx;
+  line-height: 70rpx;
+  text-align:center;
 }
    
