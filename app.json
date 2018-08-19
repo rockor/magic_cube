@@ -1,10 +1,10 @@
 {
   "pages":[
-    "pages/introduction/list",
     "pages/index/index",
     "pages/image/image",
     "pages/detail/detail",
     "pages/boxlist/boxlist",
+    "pages/introduction/list",
     "pages/boxdetail/boxdetail"
   ],
   "tabBar": {

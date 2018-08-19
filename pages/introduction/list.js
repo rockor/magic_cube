@@ -1,4 +1,7 @@
-// pages/introduction/list.js
+const Page = require('../../utils/ald-stat.js').Page;
+const Util = require('../../utils/util.js');
+const app = getApp();
+
 Page({
 
   /**
@@ -13,18 +16,6 @@ Page({
           path: '',
           extraData: {},
         },
-        {
-          url: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-          appId: 'wx06138759bb16c2f7',
-          path: '',
-          extraData: {},
-        },
-        {
-          url: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg',
-          appId: 'wx06138759bb16c2f7',
-          path: '',
-          extraData: {},
-        },
       ],
       indicatorDots: false,
       indicatorColor: '#ccc',
@@ -33,9 +24,6 @@ Page({
       interval: 5000,
       duration: 500,
     },
-    loadingHidden:true,
-    showModal:true,
-    screenHidden:false,
     list:[
       {
         'icon':'../../image/zhihu.png',
@@ -46,71 +34,85 @@ Page({
         'path': '',
         'extraData':'12123',
       },
-      {
-        'icon': '../../image/wangyi.png',
-        'name': '网易云音乐',
-        'description': '听音乐首选网易云音乐听音乐首选网易云音乐听音乐首选网易云音乐听音乐首选网易云音乐',
-        'number': '100W+',
-        'appId': 'wx06138759bb16c2f7',
-        'path': '',
-        'extraData': '12123',
-      },
-      {
-        'icon': '../../image/baidu.png',
-        'name': '百度地图',
-        'description': '迷路不用怕百度来帮你',
-        'number': '100W+',
-        'appId': 'wx06138759bb16c2f7',
-        'path': '',
-        'extraData': '12123',
-      },
-      {
-        'icon': '../../image/zhihu.png',
-        'name': '知乎',
-        'description': '有问题上知乎',
-        'number': '100W+',
-        'appId': 'wx06138759bb16c2f7',
-        'path': '',
-        'extraData': '12123',
-      },
-      {
-        'icon': '../../image/zhihu.png',
-        'name': '知乎',
-        'description': '有问题上知乎',
-        'number': '100W+',
-        'appId': 'wx06138759bb16c2f7',
-        'path': '',
-        'extraData': '12123',
-      },
     ],
-    adData:{
-      img_url:'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1534406309&di=d7122ffb1674a813ce124c0f7f8c907e&src=http://www.uimaker.com/uploads/allimg/20150317/1426578302125011.jpg',
-      descriptiton:'好好玩的游戏你尝试一下吧',
-      icon_url:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1534418599978&di=db045127ae932076735d91d415a4349d&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01e286575c3fe40000018c1b2abf3c.png%401280w_1l_2o_100sh.png',
-      name:'好玩的游戏',
-      appId: 'wx06138759bb16c2f7',
-      path: '',
-      extraData: '12123'
-    },
+    adData:{},
+    loadingHidden: false,
+    showModal: true,
+    screenHidden: false,
+    channel_id:'',
   },
 
   bannerClick: function(e) {
-    console.log('我点击了banner轮播图');
+
+    wx.request({
+      url: Util.apiUrl + '/ad_click',
+      data: {
+        cmd: 'ad_click',
+        type: 'banner',
+        wxid: e.currentTarget.id,
+        channel_id: this.data.channel_id,
+      },
+      method: 'POST',
+      complete: function (res) {
+      }
+    })
+
+    app.aldstat.sendEvent('点击轮播图', {
+      channelId: this.data.channel_id,
+      wxid: e.currentTarget.id,
+    });
   },
 
   iconClick:function(e) {
-    console.log('我点击了icon推荐');
+
+    wx.request({
+      url: Util.apiUrl + '/ad_click',
+      data: {
+        cmd: 'ad_click',
+        type: 'list',
+        wxid: e.currentTarget.id,
+        channel_id: this.data.channel_id,
+      },
+      method: 'POST',
+      complete: function (res) {
+      }
+    })
+
+    app.aldstat.sendEvent('点击列表', {
+      channelId: this.data.channel_id,
+      wxid: e.currentTarget.id,
+    });
   },
 
   adClick:function(e) {
-    console.log('我点击了推荐广告');
+
+    wx.request({
+      url: Util.apiUrl + '/ad_click',
+      data: {
+        cmd: 'ad_click',
+        type: 'default',
+        wxid: e.currentTarget.id,
+        channel_id: this.data.channel_id,
+      },
+      method: 'POST',
+      complete: function (res) {
+      }
+    })
+
+    app.aldstat.sendEvent('点击默认', {
+      channelId: this.data.channel_id,
+      wxid: e.currentTarget.id,
+    });
   },
 
   /**
    * 点击关闭事件 -- 遮罩层隐藏， 关闭弹框
    */
   clickClose:function(e) {
-    console.log('我要关闭弹框');
+    app.aldstat.sendEvent('主动关闭', {
+      channelId: this.data.channel_id,
+      wxid: e.currentTarget.id,
+    });
 
     this.setData({
       showModal: false,
@@ -122,7 +124,37 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
+    this.data.channel_id = options.channel_id;
 
+    // 请求数据
+    this.requestData('get_ad', options);
+  },
+
+  /**
+   * 请求详情列表函数
+   */
+  requestData: function (url, e) {
+    var that = this;
+    wx.request({
+      url: Util.apiUrl + '/' + url,
+      data: {
+        cmd: url,
+      },
+      method: 'POST',
+      success: function (res) {
+      },
+      complete:function(res) {
+        that.setData({
+          carousel: res.data.bannerList ? res.data.bannerList : that.data.carousel,
+          list: res.data.adList ? res.data.adList : that.data.list,
+          adData: res.data.adData ? res.data.adData : {},
+          loadingHidden: true,
+          showModal: res.data.adData ? true : false,
+          screenHidden: res.data.adData ? false : true,
+        }); 
+      }
+    })
   },
 
   /**
@@ -135,8 +167,8 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-  
+  onShow: function (options) {
+
   },
 
   /**
@@ -171,6 +203,5 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
   }
 })

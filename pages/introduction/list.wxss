@@ -4,7 +4,7 @@
 
 .item-box {
   padding: 40rpx;
-  border-top: solid 3rpx #f3f3f3;
+  border-bottom: solid 3rpx #f3f3f3;
 }
 
 .item-box .icon-list {
@@ -101,8 +101,8 @@
 }
 
 .close-line {
-  width:2rpx;
-  height:62rpx;
+  width:3rpx;
+  height:64rpx;
   position:absolute;
   right:59rpx;
   top:-62rpx;

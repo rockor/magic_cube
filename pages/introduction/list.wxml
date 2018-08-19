@@ -2,7 +2,7 @@
 <scroll-view scroll-y="true" style="height: 100%">
   <view>
     <swiper indicator-dots="{{carousel.indicatorDots}}" indicator-color="{{carousel.indicatorColor}}" indicator-active-color="{{carousel.indicatorActiveColor}}"  autoplay="{{carousel.autoplay}}" interval="{{carousel.interval}}" duration="{{carousel.duration}}" circular="true">
-      <block wx:for="{{carousel.imgUrls}}">
+      <block wx:for="{{carousel.imgUrls}}" wx:key='idx'>
         <swiper-item>
           <navigator target="miniProgram" open-type="navigate" app-id="{{item.appId}}" path="{{item.path}}" extra-data="{{item.extraData}}" version="release" hover-class='navigator-hover' bindtap="bannerClick" id='{{item.appId}}'>
             <image src="{{item.url}}" class="slide-image" class='img-banner' />
@@ -11,7 +11,7 @@
       </block>
     </swiper>
   </view>
-  <block wx:for-items="{{list}}" >
+  <block wx:for-items="{{list}}" wx:key='idx'>
     <navigator target="miniProgram" open-type="navigate" app-id="{{item.appId}}" path="{{item.path}}" extra-data="{{item.extraData}}" version="release" hover-class='navigator-hover' bindtap="iconClick" id='{{item.appId}}'  class='item-box'>
       <view class='icon-list'>
         <view class='icon'>
@@ -27,7 +27,7 @@
       </view>
      </navigator>
   </block>
-  <view class="divLine"></view>
+  <!-- <view class="divLine"></view> -->
 </scroll-view>
 
 <!--使用animation属性指定需要执行的动画 弹框 -->
