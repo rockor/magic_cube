@@ -8,37 +8,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-    carousel:{
-      imgUrls: [
-        {
-          url:'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-          appId: 'wx06138759bb16c2f7',
-          path: '',
-          extraData: {},
-        },
-      ],
-      indicatorDots: false,
-      indicatorColor: '#ccc',
-      indicatorActiveColor: '#000000',
-      autoplay: true,
-      interval: 5000,
-      duration: 500,
-    },
-    list:[
-      {
-        'icon':'../../image/zhihu.png',
-        'name':'知乎',
-        'description':'有问题上知乎',
-        'number':'100W+',
-        'appId': 'wx06138759bb16c2f7',
-        'path': '',
-        'extraData':'12123',
-      },
-    ],
+    carousel:{},
+    list:[],
     adData:{},
     loadingHidden: false,
-    showModal: true,
-    screenHidden: false,
+    showModal: false,
+    screenHidden: true,
     channel_id:'',
   },
 

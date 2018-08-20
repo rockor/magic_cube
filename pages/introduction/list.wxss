@@ -17,8 +17,9 @@
 }
 
 .icon image {
-  width: 80rpx;
-  height: 80rpx;
+  width: 110rpx;
+  height: 110rpx;
+  border-radius: 10rpx;
 }
 
 .item-box .content {
@@ -34,7 +35,7 @@
 }
 
 .item-box .icon-number {
-  font-size: 25rpx;
+  font-size: 27rpx;
   color: #5B79F7;
   float: right;
 }
@@ -150,6 +151,7 @@
   width: 140rpx;
   height: 140rpx;
   margin: 20rpx;
+  border-radius: 15rpx;
 }
 
 .icon-name {
