@@ -32,7 +32,7 @@
 
 <!--使用animation属性指定需要执行的动画 弹框 -->
 <view class='drawer_screen' hidden='{{screenHidden}}' ></view>
-<navigator arget="miniProgram" open-type="navigate" app-id="{{adData.appId}}" path="{{adData.path}}" extra-data="{{adData.extraData}}" version="release" hover-class='navigator-hover' bindtap="adClick" id='{{adData.appId}}'>
+<navigator target="miniProgram" open-type="navigate" app-id="{{adData.appId}}" path="{{adData.path}}" extra-data="{{adData.extraData}}" version="release" hover-class='navigator-hover' bindtap="adClick" id='{{adData.appId}}'>
 <view  class="drawer_box" wx:if="{{showModal}}">
   <view class='btn-close' catchtap='clickClose'>
     <image src='../../image/close.png'></image>
