@@ -1,9 +1,10 @@
 .img-banner {
   width: 100%;
+  height: 314rpx;
 }
 
 .item-box {
-  padding: 40rpx;
+  padding: 30rpx 30rpx;
   border-bottom: solid 3rpx #f3f3f3;
 }
 
@@ -16,28 +17,44 @@
   align-items: center;
 }
 
+.icon {
+  width: 120rpx;
+  height: 120rpx;
+}
+
 .icon image {
-  width: 110rpx;
-  height: 110rpx;
+  width: 100%;
+  height: 100%;
   border-radius: 10rpx;
 }
 
 .item-box .content {
-  width: 360rpx;
+  width: 410rpx;
   height: 100%;
-  padding: 0 40rpx 0 20rpx;
+  padding: 0 20rpx 0 20rpx;
 }
 
 .item-box .icon-name {
   font-size: 35rpx;
-  font-family: 'microsoft yahei';
+  font-family:  microsoft yahei, Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Arial, sans-serif;
   font-weight: 700rpx;
+  color: #505050;
+  width: 230rpx;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .item-box .icon-number {
   font-size: 27rpx;
   color: #5B79F7;
-  float: right;
+  width: 170rpx;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-left: 10rpx;
 }
 
 .item-box .description {
@@ -52,9 +69,9 @@
 }
 
 .clickButton button {
-  width: 120rpx;
+  width: 115rpx;
   height: 100%;
-  font-size: 28rpx;
+  font-size: 25rpx;
   color: white;
   background-color: #5B79F7;
   text-align: center;
@@ -70,7 +87,7 @@
   left: 0;  
   z-index: 1000;  
   background: #000;  
-  opacity: 0.5;  
+  opacity: 0.7;  
   overflow: hidden;  
 } 
    
@@ -83,6 +100,7 @@
   border-radius: 35rpx; 
   position: absolute; 
   background: #fff;
+  border: solid 2rpx #4d4d4d;   
 } 
 
 .btn-close {
@@ -139,7 +157,7 @@
 
 .box-icon {
   width: 100%;
-  height: 180rpx;
+  height: 140rpx;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -148,31 +166,34 @@
 }
 
 .box-icon image {
-  width: 140rpx;
-  height: 140rpx;
+  width: 100rpx;
+  height: 100rpx;
   margin: 20rpx;
   border-radius: 15rpx;
 }
 
-.icon-name {
-  font:  35rpx "microsoft yahei";
-  color: #949494;
+.box-icon .icon-name {
+  font-size:  33rpx;
+  color: #505050;
+  font-family: Microsoft YaHei, Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Arial, sans-serif;
   overflow: hidden;
-  width: 220rpx; 
+  width: 280rpx; 
   height: 70%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   line-height: 60rpx;
 }
 
 .box-icon button {
-  height: 80rpx;
+  height: 70rpx;
   background-color: #5B79F7;
-  font: 28rpx "microsoft yahei";
+  font: 25rpx "microsoft yahei";
   color: white;
   border-radius: 30rpx;
-  width: 160rpx;
+  width: 140rpx;
   margin: 20rpx;
   padding: 5rpx;
-  line-height: 70rpx;
+  line-height: 60rpx;
   text-align:center;
 }
    

@@ -15,67 +15,67 @@ Page({
     showModal: false,
     screenHidden: true,
     channel_id:'',
+    options:{},
   },
 
   bannerClick: function(e) {
 
+    var options = this.data.options;
+    options['cmd'] = 'ad_click';
+    options['type'] = 'banner';
+    options['wxid'] = e.currentTarget.id;
+
     wx.request({
       url: Util.apiUrl + '/ad_click',
-      data: {
-        cmd: 'ad_click',
-        type: 'banner',
-        wxid: e.currentTarget.id,
-        channel_id: this.data.channel_id,
-      },
+      data: options,
       method: 'POST',
       complete: function (res) {
       }
     })
 
     app.aldstat.sendEvent('点击轮播图', {
-      channelId: this.data.channel_id,
+      ald_media_id: this.data.channel_id,
       wxid: e.currentTarget.id,
     });
   },
 
   iconClick:function(e) {
+    var options = this.data.options;
+    options['cmd'] = 'ad_click';
+    options['type'] = 'list';
+    options['wxid'] = e.currentTarget.id;
 
     wx.request({
       url: Util.apiUrl + '/ad_click',
-      data: {
-        cmd: 'ad_click',
-        type: 'list',
-        wxid: e.currentTarget.id,
-        channel_id: this.data.channel_id,
-      },
+      data: options,
       method: 'POST',
       complete: function (res) {
       }
     })
 
     app.aldstat.sendEvent('点击列表', {
-      channelId: this.data.channel_id,
+      ald_media_id: this.data.channel_id,
       wxid: e.currentTarget.id,
     });
   },
 
   adClick:function(e) {
 
+    var options = this.data.options;
+    options['cmd'] = 'ad_click';
+    options['type'] = 'default';
+    options['wxid'] = e.currentTarget.id;
+
     wx.request({
       url: Util.apiUrl + '/ad_click',
-      data: {
-        cmd: 'ad_click',
-        type: 'default',
-        wxid: e.currentTarget.id,
-        channel_id: this.data.channel_id,
-      },
+      data: options,
       method: 'POST',
       complete: function (res) {
       }
     })
 
     app.aldstat.sendEvent('点击默认', {
-      channelId: this.data.channel_id,
+      ald_media_id: this.data.channel_id,
       wxid: e.currentTarget.id,
     });
   },
@@ -85,7 +85,7 @@ Page({
    */
   clickClose:function(e) {
     app.aldstat.sendEvent('主动关闭', {
-      channelId: this.data.channel_id,
+      ald_media_id: this.data.channel_id,
       wxid: e.currentTarget.id,
     });
 
@@ -99,8 +99,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
-    this.data.channel_id = options.channel_id;
+  
+    this.data.channel_id = options.channel_id ? options.channel_id  : options.ald_media_id;
+    this.data.options = options ? options : {};
 
     // 请求数据
     this.requestData('get_ad', options);
@@ -110,12 +111,14 @@ Page({
    * 请求详情列表函数
    */
   requestData: function (url, e) {
+
+    e = e ? e : {};
+    e['cmd'] = url;
+
     var that = this;
     wx.request({
       url: Util.apiUrl + '/' + url,
-      data: {
-        cmd: url,
-      },
+      data: e,
       method: 'POST',
       success: function (res) {
       },
